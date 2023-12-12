@@ -61,7 +61,7 @@ inotifywait -m -r -e close_write --format "%w%f" "$watch_dir" | while read file;
             # Notify Slack with the filename, count, and unique hash count
             curl -H 'Content-Type: application/json' -d '{"text":"'"[OC_Name/LOC] $(date): Malware - $filename (Files: $file_count, Unique Hashes: $hash_count)"'"}' "$slack_webhook_url"
         else
-            echo "Hash matches. Not triggering Slack webhook and not deleting the file." >> "$log_file"
+            echo "Hash matches. Not triggering Slack webhook but deleting the file." >> "$log_file"
         fi
     else
         echo "$(date) - Error copying $file to $dest_file" >> "$log_file"
