@@ -146,7 +146,7 @@
             // Redirect to the desired URL
             window.location.href = 'https://your_reverse_proxy/index.html';
         }
-    </script>
+</script>
 <script>
         function validateForm() {
             document.getElementById('error-message').style.display = 'block';
