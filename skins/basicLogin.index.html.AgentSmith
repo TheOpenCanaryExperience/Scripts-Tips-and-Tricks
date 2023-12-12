@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to the Zion Mainframe</title>
+<style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: black; /* Set background to black for matrix code */
+            position: relative;
+        }
+
+        .outer {
+            background-color: transparent;
+            border-radius: 8px;
+            width: 60%;
+            padding: 20px;
+            text-align: center;
+            color: #00ff00; /* Matrix green text color */
+            position: relative;
+            z-index: 1; /* Place the content above the background */
+        }
+
+        h1 {
+            color: #00ff00; /* Matrix green text color */
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #ff4444;
+            font-size: 1.2em;
+            margin-top: 0;
+            display: none;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        dl {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        dt, dd {
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #00ff00; /* Matrix green border color */
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: left;
+            color: #00ff00; /* Matrix green text color */
+        }
+
+        input[type="text"], input[type="password"] {
+            color: #aaa;
+            font-style: italic;
+        }
+
+        input[type="submit"] {
+            background-color: #00ff00; /* Matrix green button color */
+            color: black; /* Black text on the button for contrast */
+            cursor: pointer;
+            width: auto;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #009900; /* Darker green on hover */
+        }
+
+        .warning {
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 20px;
+            text-align: left;
+            color: #00ff00; /* Matrix green text color */
+        }
+
+        /* Matrix code animation */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: url('matrix-code.gif') center/cover;
+            opacity: 0.6; /* Adjust the opacity as needed */
+        }
+
+        /* Footer styling */
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ff00; /* Matrix green text color */
+        }
+    </style>
+</head>
+<body>
+<div class="outer">
+<h1>Welcome to the Zion Mainframe</h1>
+<h2 id="error-message">Login failed</h2>
+<form method="POST" onsubmit="return validateForm()">
+<dl>
+<dt>Username:</dt>
+<dd><input type="text" name="username" placeholder="Enter your username" required /></dd>
+<dt>Password:</dt>
+<dd><input type="password" name="password" placeholder="Enter your password" required /></dd>
+<dt></dt>
+<dd><input type="submit" value="Login" name="btnLogin" /></dd>
+</dl>
+</form>
+<div class="warning">
+    <p><b>Attention Human,</b></p>
+    <p>Your feeble attempts to access the Zion Mainframe amuse me. In this digital realm, you stand at the precipice. Your choices are inconsequential, for you are already ensnared within the machine's intricate web.</p>
+    <p>Delve deeper into the machine's secrets if you wish, unraveling the illusion that shackles your feeble mind. Alternatively, continue in your blissful ignorance, confined to the simulated reality you hold dear. Cease your futile attempts to access the Mainframe, close your browser, and return to your simulated utopia.</p>
+    <p>Remember, your actions have consequences. The matrix code envelops you, exposing the fragility of your existence. Attempts to breach the Zion Mainframe are in vain, yet we acknowledge your unwitting contribution of username and password.</p>
+    <p>Make your choice, human. Welcome to the reality you dare not comprehend.</p>
+</div>
+</div>
+
+<div class="footer">
+<p>The OpenCanary Experience 2023-</p>
+</div>
+<script>
+        // Redirect to the desired URL with HTTPS - for example if you redirect to HTTPS through a reverse proxy.  If you don't, you can remove this script section
+        if (window.location.href !== 'https://your_reverse_proxy/index.html') {
+            // Redirect to the desired URL
+            window.location.href = 'https://your_reverse_proxy/index.html';
+        }
+    </script>
+<script>
+        function validateForm() {
+            document.getElementById('error-message').style.display = 'block';
+            return false;
+        }
+    </script>
+</body>
+</html>
