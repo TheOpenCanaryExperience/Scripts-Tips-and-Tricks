@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Set the directory to be monitored
-watch_dir="~/samba"
+watch_dir="$HOME/samba"
 
 # Set the destination directory
-dest_dir="~/malware"
+dest_dir="$HOME/malware"
 
 # Set the log file
-log_file="~/logs/folder-watcher.log"
+log_file="$HOME/logs/folder-watcher.log"
 
 # Set the Slack webhook URL
 slack_webhook_url="https://hooks.slack.com/yoursecrethere"
