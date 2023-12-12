@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2; /* Faint grey background */
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .outer {
+            background-color: #fff8e1; /* Light yellow background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 60%; /* Adjusted width to 60% */
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #ff4444;
+            font-size: 1.2em;
+            margin-top: 0;
+            display: none; /* Initially hide the error message */
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        dl {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align text */
+        }
+
+        dt, dd {
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%; /* Make input boxes take the full width */
+            box-sizing: border-box;
+            text-align: left; /* Left-align input text */
+        }
+
+        input[type="text"], input[type="password"] {
+            /* Set placeholder text style */
+            color: #aaa;
+            font-style: italic;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            width: auto; /* Set width to auto to adjust dynamically */
+            box-sizing: border-box;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .warning {
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 20px;
+            text-align: left;
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class='outer'>
+        <h1>OpenCanary Admin Login</h1>
+        <h2 id="error-message">Login failed</h2>
+        <form method="POST" onsubmit="return validateForm()">
+            <dl>
+                <dt>Username:</dt>
+                <dd><input type="text" name="username" placeholder="Username for Honeypot" required /></dd>
+                <dt>Password:</dt>
+                <dd><input type="password" name="password" placeholder="Password for Honeypot" required /></dd>
+                <dt></dt>
+                <dd><input type="submit" value="Login" name="btnLogin" /></dd>
+            </dl>
+        </form>
+        <div class="warning">
+            <p><b>Warning:</b> This system is a honeypot and it's pointless to try to log in.  Your credentials will not work, they will simply be recorded....</p>
+            <p>Naturally, we have to tell you Unauthorized access or use is a violation of company policy and the law.  Since you will not get access no matter what you stuff into the fields above, I guess that fact is pointless.</p>
+            <p>Violations will result in hellfire raining down on you from high, high above.  If you read this far, you probably won't try to log in but there is no accounting for people's ability to digest the tiny little characters on their computer screens.</p>
+            <p>Christmas will be cancelled, and Santa will not even bring you coal this year.  Should you not buy into the Big Fat Chap and know that he cannot fit down your non-existence chimney, I believe you don't care.  You can use some of that stolen Bitcoin to buy yourself Microsoft or something....</p>
+            <p>Are you still reading?  <b>All your passwords are belong to us.</b></p>
+            <p>TL;DR: Someone, somewhere will be sitting, laughing at your credential-stuffing attempts while they sip some fine wine.</p>
+        </div>
+    </div>
+<script>
+        // Redirect to the desired URL with HTTPS - for example if you redirect to HTTPS through a reverse proxy.  If you don't, you can remove this script section
+        if (window.location.href !== 'https://your_reverse_proxy/index.html') {
+            // Redirect to the desired URL
+            window.location.href = 'https://your_reverse_proxy/index.html';
+        }
+</script>
+    <script>
+        function validateForm() {
+            // Add your login validation logic here
+            // If login fails, display the error message
+            document.getElementById('error-message').style.display = 'block';
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>
