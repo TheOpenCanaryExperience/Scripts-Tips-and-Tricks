@@ -54,9 +54,13 @@ inotifywait -m -r -e close_write --format "%w%f" "$watch_dir" | while read file;
             # clamscan --remove=yes "$file" >> "$log_file"
 
             # Simulate Antivirus the cheap way in compute terms and simply delete the file
-            # Considering logic change here to delete files only in expected_hashes
-            echo "Delete $file like an Antivirus would" >> "$log_file"
-            rm "$file" >> "$log_file"
+            # With a condition to only delete files with matching hashes
+            if [[ $expected_hashes =~ $check_hash ]]; then
+                echo "Delete $file like an Antivirus would" >> "$log_file"
+                rm "$file" >> "$log_file"
+            else
+                echo "Hash does not match expected hashes. Not deleting the file." >> "$log_file"
+            fi
 
             # Notify Slack with the filename, count, and unique hash count
             curl -H 'Content-Type: application/json' -d '{"text":"'"[OC_Name/LOC] $(date): Malware - $filename (Files: $file_count, Unique Hashes: $hash_count)"'"}' "$slack_webhook_url"
