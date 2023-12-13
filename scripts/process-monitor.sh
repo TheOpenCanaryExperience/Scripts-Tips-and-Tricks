@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Source: https://github.com/TheOpenCanaryExperience/Scripts-Tips-and-Trick
+# Source: https://github.com/TheOpenCanaryExperience/Scripts-Tips-and-Tricks
 # Based on: https://github.com/thinkst/opencanary
 # Read more: www.toce.ch and www.willigetpwned.com
 
