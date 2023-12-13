@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Source: https://github.com/TheOpenCanaryExperience/Scripts-Tips-and-Trick
+# Based on: https://github.com/thinkst/opencanary
+# Read more: www.toce.ch and www.willigetpwned.com
+
 # Set the process names to monitor
 PROCESS1="opencanaryd.pid"
 PROCESS2="twistd"
