@@ -7,3 +7,8 @@ This will monitor the Samba folder and when files have copied, move to malware, 
 # process-monitor.sh
 ## Trigger: Cron, 5 minutes
 Watches opencanaryd and twistd in ps -ef, sends webhook when they go AWOL.  Should wait for oc-monitor.sh to rectify
+
+# monthly-malware-mover.sh
+## Trigger: Cron, last day of the month just before midnight
+59 23 28-31 * * [ "$(date +\%d -d tomorrow)" == "01" ] && $HOME/scripts/monthly-malware-mover.sh
+Moves the malware from $HOME/malware into a monthly folder and provides a summary of the files, hashes and tries to get usernames/IPs from samba-audit.log
