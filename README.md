@@ -9,3 +9,8 @@ Your OpenCanary will benefit from the following:
 # $HOME
 ## All good things start from this point.
 Scripts will, where possible, stay in the user context.
+
+
+
+### Based on: https://github.com/thinkst/opencanary
+### Read more: www.toce.ch and www.willigetpwned.com
