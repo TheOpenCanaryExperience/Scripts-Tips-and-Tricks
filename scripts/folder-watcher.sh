@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Source: https://github.com/TheOpenCanaryExperience/Scripts-Tips-and-Trick
+# Based on: https://github.com/thinkst/opencanary
+# Read more: www.toce.ch and www.willigetpwned.com
+
 # Set the directory to be monitored
 watch_dir="$HOME/samba"
 
