@@ -10,5 +10,6 @@ Watches opencanaryd and twistd in ps -ef, sends webhook when they go AWOL.  Shou
 
 # monthly-malware-mover.sh
 ## Trigger: Cron, last day of the month just before midnight
-59 23 28-31 * * [ "$(date +\%d -d tomorrow)" == "01" ] && $HOME/scripts/monthly-malware-mover.sh
+<code>59 23 28-31 * * [ "$(date +\%d -d tomorrow)" == "01" ] && $HOME/scripts/monthly-malware-mover.sh</code>
+
 Moves the malware from $HOME/malware into a monthly folder and provides a summary of the files, hashes and tries to get usernames/IPs from samba-audit.log
