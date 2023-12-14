@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Source: https://github.com/TheOpenCanaryExperience/Scripts-Tips-and-Tricks
+# Credit: Scripts created from instructions to ChatGPT (why not?!)
 # Based on: https://github.com/thinkst/opencanary
 # Read more: www.toce.ch and www.willigetpwned.com
 
