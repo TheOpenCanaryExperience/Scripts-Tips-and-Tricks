@@ -13,3 +13,7 @@ Watches opencanaryd and twistd in ps -ef, sends webhook when they go AWOL.  Shou
 <code>59 23 28-31 * * [ "$(date +\%d -d tomorrow)" == "01" ] && $HOME/scripts/monthly-malware-mover.sh</code>
 
 Moves the malware from $HOME/malware into a monthly folder and provides a summary of the files, hashes and tries to get usernames/IPs from samba-audit.log
+
+# samba-daily-summary.sh
+## Trigger: Cron, daily, 23:59 
+Pulls the three-letter version of the month and adds the number for today (e.g. "Dec 14); greps and awks the /var/log/samba-audit.log for username, ip_address and computer_name
