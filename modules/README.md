@@ -13,3 +13,5 @@ COMMON_PASSWORDS = [
     "root",
     "passw0rd",
 ]
+
+Hit rate appears to be about 1.2% on matching passwords.
