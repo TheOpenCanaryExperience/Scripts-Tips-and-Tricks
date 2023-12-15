@@ -10,4 +10,4 @@ Canary Tokens:  Turn off the folder monitor and put some Canary Tokens into your
 
 # opencanary.conf
 Important: SMB log file (/var/log/samba-audit.log)
-Interesting: Broadcast opencanary on many ports
+Interesting: Broadcast opencanary on many ports, censys.io picks up your OC instances :)
