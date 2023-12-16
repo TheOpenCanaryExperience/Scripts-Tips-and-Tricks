@@ -46,7 +46,7 @@ while IFS= read -r line; do
 done < "$log_file"
 
 # Construct the payload for the webhook with proper formatting
-payload=$(printf '[Digger/CH] Samba Access Summary for %s\n\nList of Usernames:\n%s\n\nList of IP Addresses:\n%s\n\nList of Computers:\n%s' \
+payload=$(printf '[OC/Loc] Samba Access Summary for %s\n\nList of Usernames:\n%s\n\nList of IP Addresses:\n%s\n\nList of Computers:\n%s' \
                  "$TODAY_MONTH_DAY" "$(echo "${!usernames[@]}" | tr ' ' '\n')" "$(echo "${!ip_addresses[@]}" | tr ' ' '\n')" "$(echo "${!computers[@]}" | tr ' ' '\n')")
 
 # Send the payload to the webhook with x-www-form-urlencoded content type
