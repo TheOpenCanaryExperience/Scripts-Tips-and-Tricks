@@ -79,7 +79,7 @@ while true; do
         fi
 
         # Notify Splunk with the filename, and unique hash count
-        splunk_data=$(printf '{"OC":"%s","filename":"%s","SHA256Hash":"%s"}' "$OC_Name" "$filename" "$(sha256sum "$file" | awk '{print $1}')")
+        splunk_data=$(printf '{"OC":"%s","filename":"%s","SHA256Hash":"%s"}' "$OC_Name" "$filename" "$(sha256sum "$dest_file" | awk '{print $1}')")
         
         splunk_result=$(curl -ksS -m 5 -H "Content-Type: application/json" -d "{\"event\":$splunk_data}" "$splunk_hec_url" 2>&1)
         http_status_code=$(echo "$splunk_result" | tail -n 1)
