@@ -2,8 +2,10 @@
 ## Trigger: On boot, either a service running or crontab #reboot
 This will monitor the Samba folder and when files have copied, move to malware, delete (command line, like an antivirus - clamav may kill your microhost) and will fire a webhook if the hash is not the common file hash.
 
+### Default behaviour is to only delete the following file and only notify Slack/webhook on other files
 3c2fe308c0a563e06263bbacf793bbe9b2259d795fcc36b953793a7e499e7f71 (https://www.virustotal.com/gui/file/3c2fe308c0a563e06263bbacf793bbe9b2259d795fcc36b953793a7e499e7f71) is the main file I have seen in my OpenCanary SMB shares.
 
+### Webhook into Splunk
 It will also push a webhook into Splunk so that you can report in a dashboard what you see.  It's currently configured to deliver the following in the Splunk webhook: OC_Name, SHA256sum (on dest_file since deletion can happen in the script) and the filename itself.
 
 # canary-monitor.sh
