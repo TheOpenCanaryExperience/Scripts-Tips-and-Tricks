@@ -22,3 +22,7 @@ No longer processes samba-audit.log since this is done daily
 # samba-daily-summary.sh
 ## Trigger: Cron, daily, 08:00 
 Pulls the three-letter version of the month and adds the number for yesterday (e.g. "Dec 14); greps and awks the /var/log/samba-audit.log for username, ip_address and computer_name.  Then sends it to you via Webhook.
+
+# malware-summary-mastodon.sh
+## Trigger: Cron, every 4 hours (hours_to_check in script
+Sends a summary of the files to Mastodon with links to VirusTotal
