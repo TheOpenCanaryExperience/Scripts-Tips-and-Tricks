@@ -30,3 +30,13 @@ Sends a summary of the files to Mastodon with links to VirusTotal
 # samba-daily-summary-mastodon.sh
 ## Trigger: Cron, daily
 Sends a summary of files (volume) submitted, unique usernames, IP addresses (final octet xxx) and computernames seen
+And am image
+
+# oc-daily-summary-mastodon.py
+## Trigger: Cron, daily
+Sends a summary of what the opencanary has seen to Mastodon
+Ports - top 10 and total count
+Usernames - top 10 and total unique count
+Passwords - top 10 and total unique count
+Source IPs - top ten (final octet xxx) plus unique count
+And an image
