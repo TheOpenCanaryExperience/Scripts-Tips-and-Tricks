@@ -29,7 +29,7 @@ Sends a summary of the files to Mastodon with links to VirusTotal
 
 # samba-daily-summary-mastodon.sh
 ## Trigger: Cron, daily
-Sends a summary of files (volume) submitted, unique usernames, IP addresses (final octet xxx) and computernames seen
+Sends a summary of files (volume) submitted with unique hashes (hyperlink into VirusTotal), unique usernames, IP addresses (final octet xxx) and computernames seen
 And am image
 
 # oc-daily-summary-mastodon.py
