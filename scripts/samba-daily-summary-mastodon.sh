@@ -57,6 +57,18 @@ count_malware_files() {
     echo "$count"
 }
 
+# Function to extract unique hashes from files in the malware directory with yesterday's datestamp
+extract_hashes() {
+    find "$malware_directory" -type f -name "*$YESTERDAY_DATE*" -exec sha256sum {} + | cut -d' ' -f1 | sort -u
+}
+
+# Function to format hashes as hyperlinks to VirusTotal
+format_hashes() {
+    while read -r hash; do
+        echo "    [Link: https://www.virustotal.com/gui/file/$hash)]"
+    done
+}
+
 # Initialize arrays to store unique values
 declare -A usernames
 declare -A ip_addresses
@@ -76,10 +88,14 @@ media_id=$(upload_image "$image_path")
 # Count files in the malware directory with yesterday's datestamp
 malware_count=$(count_malware_files)
 
-# Construct the payload for the Mastodon API with the media ID and malware count
-message="[OCX/Loc] #opencanary Samba Access Summary for $TODAY_MONTH_DAY%0A%0A"
-message+="This OpenCanary received $malware_count file samples yesterday%0A%0A"
-message+="List of Usernames:%0A"
+# Extract unique hashes from files in the malware directory with yesterday's datestamp
+hashes=$(extract_hashes | format_hashes)
+
+# Construct the payload for the Mastodon API with the media ID, malware count, and formatted hashes
+message="[Armada/US-East] #opencanary Samba Access Summary for $TODAY_MONTH_DAY%0A%0A"
+message+="This OpenCanary received $malware_count file samples yesterday%0A"
+message+="File hashes seen:%0A$hashes%0A"
+message+="%0AList of Usernames:%0A"
 for username in "${!usernames[@]}"; do
     occurrences="${usernames[$username]}"
     message+="    $username: $occurrences occurrences%0A"
