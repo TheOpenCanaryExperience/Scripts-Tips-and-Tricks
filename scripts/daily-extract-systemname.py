@@ -35,6 +35,7 @@ def extract_content(log_file, system_name):
     username_filename = f'username_{system_name}_{date_yesterday}.log'
     password_filename = f'password_{system_name}_{date_yesterday}.log'
     vncpass_filename = f'vncpass_{system_name}_{date_yesterday}.log'
+    src_host_filename = f'src_host_{system_name}_{date_yesterday}.log'
 
     with open(log_file, 'r') as f:
         for line in f:
@@ -73,6 +74,12 @@ def extract_content(log_file, system_name):
             else:
                 with open(os.path.join(filtered_folder, vncpass_filename), 'a') as vncpass_file:
                     vncpass_file.write('<blank>\n')
+
+            # Extract and write src_host information
+            src_host = log_data.get('src_host', None)
+            if src_host is not None:
+                with open(os.path.join(filtered_folder, src_host_filename), 'a') as src_host_file:
+                    src_host_file.write(f'{src_host}\n')
 
 if __name__ == '__main__':
     system_name = "yourshere"  # Replace with the actual system name
