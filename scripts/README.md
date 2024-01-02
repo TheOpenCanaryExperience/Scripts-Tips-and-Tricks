@@ -40,3 +40,12 @@ Usernames - top 10 and total unique count
 Passwords - top 10 and total unique count
 Source IPs - top ten (final octet xxx) plus unique count
 And an image
+
+# daily-extract-systemname.py
+##Trigger: Cron, daily
+Designed to run on the yesterday opencanary.log (I scp these to a host for this) and gets the following into new files:
+Ports (named nicely)
+Usernames
+Passwords
+VNC Passwords
+Source IPs
