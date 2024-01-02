@@ -49,3 +49,6 @@ Usernames
 Passwords
 VNC Passwords
 Source IPs
+
+# daily-extract-param.py
+## Run manually, pass system parameter and days backward to process
