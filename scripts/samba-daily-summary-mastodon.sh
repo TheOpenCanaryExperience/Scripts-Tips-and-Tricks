@@ -7,8 +7,8 @@ access_token="your_access_token"  # Replace with your Mastodon access token
 image_path="/path/to/your/image.png"  # Replace with the path to your image
 malware_directory="$HOME/malware"  # Replace with your malware directory path
 
-# Get yesterday's date in the format "Dec 20"
-TODAY_MONTH_DAY=$(date -d "yesterday" +"%b %d")
+# Get yesterday's date in the format "Dec 3"
+TODAY_MONTH_DAY=$(date -d "yesterday" +"%b %e" | sed 's/  / /; s/^ //')
 YESTERDAY_DATE=$(date -d "yesterday" +"%Y%m%d")
 
 # Function to upload an image and get the media ID
@@ -77,7 +77,7 @@ declare -A computers
 # Read the log file line by line
 while IFS= read -r line; do
     # Check if the line matches yesterday's date format
-    if [[ $line =~ ^$TODAY_MONTH_DAY ]]; then
+    if [[ $line =~ ^$TODAY_MONTH_DAY || $line =~ ^${TODAY_MONTH_DAY// /  } ]]; then
         extract_info "$line"
     fi
 done < "$log_file"
@@ -92,7 +92,7 @@ malware_count=$(count_malware_files)
 hashes=$(extract_hashes | format_hashes)
 
 # Construct the payload for the Mastodon API with the media ID, malware count, and formatted hashes
-message="[Armada/US-East] #opencanary Samba Access Summary for $TODAY_MONTH_DAY%0A%0A"
+message="[OC/Loc] #opencanary Samba Access Summary for $TODAY_MONTH_DAY%0A%0A"
 message+="This OpenCanary received $malware_count file samples yesterday%0A"
 message+="File hashes seen:%0A$hashes%0A"
 message+="%0AList of Usernames:%0A"
