@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Matrix has You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Share Tech Mono', monospace;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00ff00;
+      background: black;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 2rem;
+      border: 1px solid #00ff00;
+      box-shadow: 0 0 20px #00ff00;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      border: none;
+      border-bottom: 2px solid #00ff00;
+      background: #000;
+      color: #00ff00;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #0f0;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 0.75rem;
+      background: #00ff00;
+      color: #000;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ff00;
+      transition: background 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: #00cc00;
+    }
+
+    @media (max-width: 500px) {
+      .login-container {
+        padding: 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+    if (window.location.hostname !== "sentinel.toce.ch") {
+        window.location.replace("https://sentinel.toce.ch");
+    }
+</script>
+
+  <canvas id="matrix"></canvas>
+
+  <div class="login-container">
+    <h1>Zion Mainframe</h1>
+    <form method="POST">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="Login" name="btnLogin">
+    </form>
+  </div>
+
+  <script>
+    // Matrix background animation
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = 'アァイィウヴエカキクケコサシスセソタチッツトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#00FF00';
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height || Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 33);
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
