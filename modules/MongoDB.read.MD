@@ -18,7 +18,7 @@ This guide walks you through adding a fully functional MongoDB honeypot to a cle
 ## Files Required
 
 You'll need these three files:
-1. **mongodb.py** - The honeypot module
+1. **mongodb.py** - The honeypot module (or mongodb_ransom-ready.py renamed to mongodb.py)
 2. **mongodb_config.conf** - Configuration snippet (for reference)
 3. **MONGODB_INSTALLATION_GUIDE.md** - This guide
 
